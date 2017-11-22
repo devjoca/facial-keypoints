@@ -6,5 +6,6 @@ gcloud ml-engine jobs submit training $JOB_NAME \
     --package-path ./trainer \
     --module-name trainer.keras-model \
     --region us-central1 \
+    --config=trainer/cloudml-gpu.yaml \
     -- \
     --train-file gs://ml-facial-keypoints/data/training.pickle
