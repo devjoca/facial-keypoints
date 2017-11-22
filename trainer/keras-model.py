@@ -228,7 +228,7 @@ def fitTrainingSpecialists():
         train_specialist.layers[-1].outbound_nodes = []
         train_specialist.add(Dense(len(train_columns)))
 
-        train_specialist.compile(loss='mean_squared_error', optimizer='adam')
+        train_specialist.compile(loss='mean_squared_error', optimizer='adam', metrics=['accuracy'])
         change_lr = LearningRateScheduler(lambda epoch: float(learning_rate[epoch]))
         early_stop = EarlyStopping(patience=100)
         flipGen = FlippedImageDataGenerator()
