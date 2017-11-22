@@ -242,7 +242,7 @@ def fitTrainingSpecialists():
                                 validation_data=(X_test, y_test),
                                 callbacks=[change_lr, early_stop])
 
-        specialists[train_columns] = train_specialist
+        train_specialists[train_columns] = train_specialist
 
 import argparse
 
