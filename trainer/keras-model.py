@@ -242,6 +242,17 @@ def fitTrainingSpecialists():
                                 validation_data=(X_test, y_test),
                                 callbacks=[change_lr, early_stop])
 
+        score = train_specialist.evaluate(X_test, y_test, verbose=0)
+        print('Test loss:', score[0])
+        print('Test accuracy:', score[1])
+
+        model.save('model.h5')
+
+        # Save model.h5 on to google storage
+        with file_io.FileIO('model.h5', mode='r') as input_f:
+            with file_io.FileIO(job_dir + '/model.h5', mode='w+') as output_f:
+                output_f.write(input_f.read())
+
         train_specialists[train_columns] = train_specialist
 
 import argparse
